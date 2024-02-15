@@ -250,7 +250,6 @@ void Read_matrix_from_vector(int local_mat[], int n, int my_rank, int p,
         MPI_Scatter(temp_mat, n * n / p, MPI_INT,
             local_mat, n * n / p, MPI_INT, 0, comm);
         free(temp_mat);
-        Print_matrix(local_mat, n, my_rank, p, comm);
     }
     else {
         MPI_Scatter(temp_mat, n * n / p, MPI_INT,
@@ -276,16 +275,26 @@ int floyd_with_file(int argc, char* argv[]) {
     //    printf("How many vertices?\n");
     //    scanf("%d", &n);
     //}
-    std::vector<std::vector<int>> vec;
+    std::vector<std::vector<int>> vec = readAdjacencyMatrixFromFile(argv[1]);
     if (my_rank == 0) {
-        printf("running with file: %s\n", argv[1]);
-        vec = readAdjacencyMatrixFromFile(argv[1]);
         n = vec.size();
+        printf("running with file: %s, size = %d\n", argv[1], n);
+        // vec = readAdjacencyMatrixFromFile(argv[1]);
+    }  
+    
+    if (p > n) {
+        printf("Too many processes, max should be: %d\n", n);
+        MPI_Finalize();
+        return -1;
     }
 
     MPI_Bcast(&n, 1, MPI_INT, 0, comm);
     local_mat = (int*)malloc(n * n / p * sizeof(int));
+    if (my_rank == 0) printf("Reading from vector ...");
     Read_matrix_from_vector(local_mat, n, my_rank, p, comm, vec);
+    if (my_rank == 0) printf("We got:\n");
+    Print_matrix(local_mat, n, my_rank, p, comm);
+    if (my_rank == 0) printf("\n");
 
     //if (my_rank == 0) printf("Enter the local_matrix\n");
     //Read_matrix(local_mat, n, my_rank, p, comm);
