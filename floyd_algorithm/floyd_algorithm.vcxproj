@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{53930420-29c7-44d6-b5b2-36976e411a96}</ProjectGuid>
-    <RootNamespace>mpisample</RootNamespace>
+    <ProjectGuid>{29cc0469-24ae-4d6a-9222-9ac787c8996d}</ProjectGuid>
+    <RootNamespace>floydalgorithm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./;../../Common</ExternalIncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -102,10 +105,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>./;../../Common;C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,24 +134,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Example_0.cpp" />
-    <ClCompile Include="Example_1.cpp" />
-    <ClCompile Include="Example_2.cpp" />
-    <ClCompile Include="Example_3.cpp" />
-    <ClCompile Include="Example_4.cpp" />
-    <ClCompile Include="Example_5.cpp" />
-    <ClCompile Include="floyds_algorithm.cpp" />
-    <ClCompile Include="mpi-sample.cpp" />
-    <ClCompile Include="MyMPI.cpp" />
-    <ClCompile Include="reading_an_adjacency_matrix_from_file.cpp" />
-    <ClCompile Include="sieve_of_eratosthenes_.cpp" />
+    <ClCompile Include="..\mpi-sample\quinn_mpi.cpp" />
+    <ClCompile Include="floyd_algorithm_quinn.cpp" />
+    <ClCompile Include="floyd_algorithm_simon.cpp" />
+    <ClCompile Include="read_adjacency_matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Examples.h" />
-    <ClInclude Include="mpi_helper.h" />
-    <ClInclude Include="MyMPI.h" />
+    <ClInclude Include="..\mpi-sample\mpi_helper.h" />
+    <ClInclude Include="..\mpi-sample\quinn_mpi.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="quinn_test_case.txt" />
     <Text Include="sample_adjacency_matrix.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

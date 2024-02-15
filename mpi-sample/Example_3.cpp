@@ -2,6 +2,7 @@
 // By: Nick from CoffeeBeforeArch
 
 #include "Examples.h"
+#include <numeric>
 
 
 
@@ -33,7 +34,7 @@ int Example_3(int argc, char* argv[]) {
         // Create random number generator
         std::random_device rd;
         std::mt19937 mt(rd());
-        std::uniform_int_distribution dist(1, 1);
+        std::uniform_int_distribution<int> dist(1, 1);
 
         // Create random data
         std::generate(send_ptr.get(), send_ptr.get() + num_elements,
@@ -48,16 +49,16 @@ int Example_3(int argc, char* argv[]) {
         chunk_size, MPI_INT, 0, MPI_COMM_WORLD);
 
     // Calculate partial results in each thread
-    //auto local_result =
-    //    std::reduce(recv_buffer.get(), recv_buffer.get() + chunk_size);
+    auto local_result =
+        std::reduce(recv_buffer.get(), recv_buffer.get() + chunk_size);
     
 
     // Perform the reduction
     int global_result = 0;
-    //MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
-    //    MPI_COMM_WORLD);
-    //MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
-    //    MPI_COMM_WORLD);
+    MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
+        MPI_COMM_WORLD);
+    MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
+        MPI_COMM_WORLD);
 
     // Print the result from rank 0
     if (task_id == 0) {

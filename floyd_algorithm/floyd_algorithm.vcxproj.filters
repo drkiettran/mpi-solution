@@ -15,53 +15,32 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mpi-sample.cpp">
+    <ClCompile Include="floyd_algorithm_quinn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Example_1.cpp">
+    <ClCompile Include="..\mpi-sample\quinn_mpi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Example_0.cpp">
+    <ClCompile Include="floyd_algorithm_simon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Example_2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Example_3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Example_4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Example_5.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sieve_of_eratosthenes_.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="floyds_algorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyMPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="reading_an_adjacency_matrix_from_file.cpp">
+    <ClCompile Include="read_adjacency_matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Examples.h">
+    <ClInclude Include="..\mpi-sample\quinn_mpi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyMPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mpi_helper.h">
+    <ClInclude Include="..\mpi-sample\mpi_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="sample_adjacency_matrix.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="quinn_test_case.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

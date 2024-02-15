@@ -80,7 +80,7 @@ int The_Sieve_of_Eratosthenes(int argc, char* argv[]) {
     if (!id) index = 0;
     prime = 2;
     do {
-        printf("prime: %d\n", prime);
+        
         if (prime * prime > low_value)
             first = prime * prime - low_value;
         else {

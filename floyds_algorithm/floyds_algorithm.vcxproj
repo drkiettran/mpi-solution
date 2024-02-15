@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{53930420-29c7-44d6-b5b2-36976e411a96}</ProjectGuid>
-    <RootNamespace>mpisample</RootNamespace>
+    <ProjectGuid>{ef612da8-87bb-48b0-a446-0a50c7d79a6a}</ProjectGuid>
+    <RootNamespace>floydsalgorithm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -102,16 +102,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>msmpi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,25 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Example_0.cpp" />
-    <ClCompile Include="Example_1.cpp" />
-    <ClCompile Include="Example_2.cpp" />
-    <ClCompile Include="Example_3.cpp" />
-    <ClCompile Include="Example_4.cpp" />
-    <ClCompile Include="Example_5.cpp" />
     <ClCompile Include="floyds_algorithm.cpp" />
-    <ClCompile Include="mpi-sample.cpp" />
-    <ClCompile Include="MyMPI.cpp" />
-    <ClCompile Include="reading_an_adjacency_matrix_from_file.cpp" />
-    <ClCompile Include="sieve_of_eratosthenes_.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Examples.h" />
-    <ClInclude Include="mpi_helper.h" />
-    <ClInclude Include="MyMPI.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="sample_adjacency_matrix.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
