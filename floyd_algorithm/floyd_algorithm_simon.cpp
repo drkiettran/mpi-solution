@@ -223,6 +223,42 @@ void Copy_row(int local_mat[], int n, int p, int row_k[], int k) {
 
 std::vector<std::vector<int>> readAdjacencyMatrixFromFile(const std::string filename);
 
+/*---------------------------------------------------------------------
+ * Function:  Read_matrix_from_vector
+ * Purpose:   Read in the local_matrix on process 0 and scatter it using a
+ *            block row distribution among the processes.
+ * In args:   All except local_mat
+ * Out arg:   local_mat
+ */
+void Read_matrix_from_vector(int local_mat[], int n, int my_rank, int p, 
+                             MPI_Comm comm, std::vector<std::vector<int>> vec) {
+    int i, j;
+    int* temp_mat = NULL;
+
+    if (my_rank == 0) {
+        temp_mat = (int*)malloc(n * n * sizeof(int));
+        i = 0;
+        for (std::vector<int> v : vec) {
+            j = 0;
+            for (int val : v) {
+                //  scanf("%d", &temp_mat[i * n + j]);
+                temp_mat[i * n + j] = val;
+                j++;
+            }
+            i++;
+        }
+        MPI_Scatter(temp_mat, n * n / p, MPI_INT,
+            local_mat, n * n / p, MPI_INT, 0, comm);
+        free(temp_mat);
+        Print_matrix(local_mat, n, my_rank, p, comm);
+    }
+    else {
+        MPI_Scatter(temp_mat, n * n / p, MPI_INT,
+            local_mat, n * n / p, MPI_INT, 0, comm);
+    }
+
+}  /* Read_matrix */
+
 int floyd_with_file(int argc, char* argv[]) {
     int  n;
     int* local_mat;
@@ -240,36 +276,16 @@ int floyd_with_file(int argc, char* argv[]) {
     //    printf("How many vertices?\n");
     //    scanf("%d", &n);
     //}
-
-    std::vector<std::vector<int>> vec = readAdjacencyMatrixFromFile(argv[1]);
-
-    /* There is a better way ... but*/
-    int i = 0;
-    n = vec.size();
-    local_mat = (int*)malloc(n * n / p * sizeof(int));
-
-    for (std::vector<int> v : vec) {
-        int j = 0;
-        for (int val : v) {
-            printf(" %d ", i);
-            local_mat[i*n+j] = val;
-            j++;
-        }
-        printf("\n");
-        i++;
+    std::vector<std::vector<int>> vec;
+    if (my_rank == 0) {
+        printf("running with file: %s\n", argv[1]);
+        vec = readAdjacencyMatrixFromFile(argv[1]);
+        n = vec.size();
     }
 
-    printf("local_mat: \n");
-
-
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf(" %d ", local_mat[i*n+j]);
-        }
-        printf("\n");
-    }
     MPI_Bcast(&n, 1, MPI_INT, 0, comm);
+    local_mat = (int*)malloc(n * n / p * sizeof(int));
+    Read_matrix_from_vector(local_mat, n, my_rank, p, comm, vec);
 
     //if (my_rank == 0) printf("Enter the local_matrix\n");
     //Read_matrix(local_mat, n, my_rank, p, comm);
