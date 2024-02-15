@@ -26,6 +26,12 @@
 /*
 * Updated the program to run with C++, read matrix in from a file.
 * Kiet T. Tran, HUST.
+* 
+* Build on Windows: Use Visual Studio 2022 to build the solution/project
+* Build on HPC: use Makefile
+* 
+* Running on Windows: mpiexec  -n 3 floyd_algorithm.exe \dev\cisc701\mpi-solution\floyd_algorithm\quinn_test_case.txt
+* Running on HPC: mpirun -n 6 ./floyd_algorithm_simon ./quinn_test_case.txt
 */
 
 #define _CRT_SECURE_NO_WARNINGS
