@@ -282,11 +282,6 @@ int floyd_with_file(int argc, char* argv[]) {
         // vec = readAdjacencyMatrixFromFile(argv[1]);
     }  
     
-    if (p > n) {
-        printf("Too many processes, max should be: %d\n", n);
-        MPI_Finalize();
-        return -1;
-    }
 
     MPI_Bcast(&n, 1, MPI_INT, 0, comm);
     local_mat = (int*)malloc(n * n / p * sizeof(int));
