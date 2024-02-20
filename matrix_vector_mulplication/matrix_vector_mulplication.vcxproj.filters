@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_vector_mulplication_simon.cpp">
+    <ClCompile Include="matrix_vector_multiplication_simon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="read_matrix_from_file.cpp">

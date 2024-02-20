@@ -24,6 +24,7 @@
     <ProjectGuid>{b094593e-4405-484f-961c-c26c4074122b}</ProjectGuid>
     <RootNamespace>matrixvectormulplication</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>matrix_vector_multiplication</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -134,7 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_vector_mulplication_simon.cpp" />
+    <ClCompile Include="matrix_vector_multiplication_simon.cpp" />
     <ClCompile Include="read_matrix_from_file.cpp" />
     <ClCompile Include="write_matrix_to_file.cpp" />
   </ItemGroup>
