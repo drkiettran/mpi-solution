@@ -15,12 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_vector_mulplication.cpp">
+    <ClCompile Include="matrix_vector_mulplication_simon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="read_matrix_from_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="write_matrix_to_file.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="quinn_test_case.txt">
+    <Text Include="quinn_test_case_A.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="quinn_test_case_x.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

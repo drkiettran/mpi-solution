@@ -26,7 +26,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
@@ -43,7 +43,7 @@ void Print_matrix(char* title, float local_A[], int local_m,
 void Print_vector(char* title, float local_y[], int local_m, int my_rank,
     int p, MPI_Comm comm);
 
-int main(void) {
+int matrix_multiplication(void) {
     int             my_rank;
     int             p;
     float* local_A;
@@ -283,3 +283,59 @@ void Print_vector(
             0, MPI_COMM_WORLD);
     }
 }  /* Print_vector */
+
+int matrix_multiplication_from_files(int args, char* argv[]) {
+    int             my_rank;
+    int             p;
+    float*          local_A;
+    float*          global_x;
+    float*          local_x;
+    float*          local_y;
+    int             m, n;
+    int             local_m, local_n;
+    MPI_Comm        comm;
+
+    MPI_Init(NULL, NULL);
+    comm = MPI_COMM_WORLD;
+    MPI_Comm_size(comm, &p);
+    MPI_Comm_rank(comm, &my_rank);
+
+    if (my_rank == 0) {
+        printf("Enter the order of the matrix (m x n)\n");
+        scanf("%d %d", &m, &n);
+    }
+    MPI_Bcast(&m, 1, MPI_INT, 0, comm);
+    MPI_Bcast(&n, 1, MPI_INT, 0, comm);
+
+    local_m = m / p;
+    local_n = n / p;
+
+    local_A = (float*)malloc(local_m * n * sizeof(float));
+    Read_matrix((char*)"Enter the matrix", local_A, local_m, n, my_rank, p, comm);
+    Print_matrix((char*)"We read", local_A, local_m, n, my_rank, p, comm);
+
+    local_x = (float*)malloc(local_n * sizeof(float));
+    Read_vector((char*)"Enter the vector", local_x, local_n, my_rank, p, comm);
+    Print_vector((char*)"We read", local_x, local_n, my_rank, p, comm);
+    local_y = (float*)malloc(local_m * sizeof(float));
+    global_x = (float*)malloc(n * sizeof(float));
+
+    Parallel_matrix_vector_prod(local_A, m, n, local_x, global_x,
+        local_y, local_m, local_n, comm);
+    Print_vector((char*)"The product is", local_y, local_m, my_rank, p, comm);
+
+    free(local_A);
+    free(local_x);
+    free(local_y);
+    free(global_x);
+
+    MPI_Finalize();
+
+    return 0;
+}  /* main */
+
+
+void main(int args, char* argv[]) {
+    std::cout << "Matrix multiplication ..." << std::endl;
+    matrix_multiplication();
+}

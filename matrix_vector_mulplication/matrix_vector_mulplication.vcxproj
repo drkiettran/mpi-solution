@@ -108,6 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>./;../../Common;C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,10 +134,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_vector_mulplication.cpp" />
+    <ClCompile Include="matrix_vector_mulplication_simon.cpp" />
+    <ClCompile Include="read_matrix_from_file.cpp" />
+    <ClCompile Include="write_matrix_to_file.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="quinn_test_case.txt" />
+    <Text Include="quinn_test_case_A.txt" />
+    <Text Include="quinn_test_case_x.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
