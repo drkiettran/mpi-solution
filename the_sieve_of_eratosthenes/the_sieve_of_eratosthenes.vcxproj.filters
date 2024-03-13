@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="the_sieve_of_eratosthenes.cpp">
+    <ClCompile Include="finding_primes_simon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./;../../Common</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./;../../Common;./</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>./;../../Common;C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,13 +135,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\mpi-sample\quinn_mpi.cpp" />
+    <ClCompile Include="matrix_multiplication_from_chatgpt.cpp" />
     <ClCompile Include="matrix_vector_multiplication_simon.cpp" />
+    <ClCompile Include="quinn_mv.cpp" />
     <ClCompile Include="read_matrix_from_file.cpp" />
     <ClCompile Include="write_matrix_to_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="quinn_test_case_A.txt" />
     <Text Include="quinn_test_case_x.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="quinn_mpi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

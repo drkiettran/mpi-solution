@@ -1,6 +1,3 @@
-/* URL: https://redirect.cs.umbc.edu/~tsimo1/CMSC483/cs220/code/mat-vect/parallel_mat_vect.c */
-/* Simon @ UMBC */
-
 /* File:     parallel_mat_vect.c
  *
  * Purpose:  Computes a parallel matrix-vector product.  Matrix
@@ -23,13 +20,12 @@
  *
  */
 
-
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+
+#define _CRT_SECURE_NO_WARNINGS
+#define DEBUG
 
 void Read_matrix(char* prompt, float local_A[], int local_m, int n,
     int my_rank, int p, MPI_Comm comm);
@@ -43,7 +39,7 @@ void Print_matrix(char* title, float local_A[], int local_m,
 void Print_vector(char* title, float local_y[], int local_m, int my_rank,
     int p, MPI_Comm comm);
 
-int matrix_multiplication(void) {
+int simon_mv(void) {
     int             my_rank;
     int             p;
     float* local_A;
@@ -54,6 +50,8 @@ int matrix_multiplication(void) {
     int             local_m, local_n;
     MPI_Comm        comm;
 
+    setvbuf(stdout, NULL, _IONBF, 0); // disable buffering.
+
     MPI_Init(NULL, NULL);
     comm = MPI_COMM_WORLD;
     MPI_Comm_size(comm, &p);
@@ -61,7 +59,7 @@ int matrix_multiplication(void) {
 
     if (my_rank == 0) {
         printf("Enter the order of the matrix (m x n)\n");
-        scanf("%d %d", &m, &n);
+        scanf_s("%d %d", &m, &n);
     }
     MPI_Bcast(&m, 1, MPI_INT, 0, comm);
     MPI_Bcast(&n, 1, MPI_INT, 0, comm);
@@ -77,7 +75,7 @@ int matrix_multiplication(void) {
     Read_vector((char*)"Enter the vector", local_x, local_n, my_rank, p, comm);
     Print_vector((char*)"We read", local_x, local_n, my_rank, p, comm);
     local_y = (float*)malloc(local_m * sizeof(float));
-    global_x = (float*)malloc(n * sizeof(float));
+    global_x = (float*) malloc(n * sizeof(float));
 
     Parallel_matrix_vector_prod(local_A, m, n, local_x, global_x,
         local_y, local_m, local_n, comm);
@@ -122,7 +120,7 @@ void Read_matrix(
         printf("%s\n", prompt);
         for (i = 0; i < p * local_m; i++)
             for (j = 0; j < n; j++)
-                scanf("%f", &temp[i * n + j]);
+                scanf_s("%f", &temp[i * n + j]);
         MPI_Scatter(temp, local_m * n, MPI_FLOAT, local_A,
             local_m * n, MPI_FLOAT, 0, comm);
         free(temp);
@@ -160,10 +158,10 @@ void Read_vector(
 #   endif
 
     if (my_rank == 0) {
-        temp = (float*) malloc(local_n * p * sizeof(float));
+        temp = (float*)malloc(local_n * p * sizeof(float));
         printf("%s\n", prompt);
         for (i = 0; i < p * local_n; i++)
-            scanf("%f", &temp[i]);
+            scanf_s("%f", &temp[i]);
 #       ifdef DEBUG
         printf("Proc 0 > input vector = ");
         for (i = 0; i < p * local_n; i++)
@@ -237,7 +235,7 @@ void Print_matrix(
     float* temp = NULL;
 
     if (my_rank == 0) {
-        temp = (float*) malloc(local_m * p * n * sizeof(float));
+        temp = (float*)malloc(local_m * p * n * sizeof(float));
         MPI_Gather(local_A, local_m * n, MPI_FLOAT, temp,
             local_m * n, MPI_FLOAT, 0, comm);
         printf("%s\n", title);
@@ -269,7 +267,7 @@ void Print_vector(
 
 
     if (my_rank == 0) {
-        temp = (float*)malloc(local_m * p * sizeof(float));
+        temp = (float*) malloc(local_m * p * sizeof(float));
         MPI_Gather(local_y, local_m, MPI_FLOAT, temp, local_m, MPI_FLOAT,
             0, MPI_COMM_WORLD);
         printf("%s\n", title);
@@ -283,59 +281,3 @@ void Print_vector(
             0, MPI_COMM_WORLD);
     }
 }  /* Print_vector */
-
-int matrix_multiplication_from_files(int args, char* argv[]) {
-    int             my_rank;
-    int             p;
-    float*          local_A;
-    float*          global_x;
-    float*          local_x;
-    float*          local_y;
-    int             m, n;
-    int             local_m, local_n;
-    MPI_Comm        comm;
-
-    MPI_Init(NULL, NULL);
-    comm = MPI_COMM_WORLD;
-    MPI_Comm_size(comm, &p);
-    MPI_Comm_rank(comm, &my_rank);
-
-    if (my_rank == 0) {
-        printf("Enter the order of the matrix (m x n)\n");
-        scanf("%d %d", &m, &n);
-    }
-    MPI_Bcast(&m, 1, MPI_INT, 0, comm);
-    MPI_Bcast(&n, 1, MPI_INT, 0, comm);
-
-    local_m = m / p;
-    local_n = n / p;
-
-    local_A = (float*)malloc(local_m * n * sizeof(float));
-    Read_matrix((char*)"Enter the matrix", local_A, local_m, n, my_rank, p, comm);
-    Print_matrix((char*)"We read", local_A, local_m, n, my_rank, p, comm);
-
-    local_x = (float*)malloc(local_n * sizeof(float));
-    Read_vector((char*)"Enter the vector", local_x, local_n, my_rank, p, comm);
-    Print_vector((char*)"We read", local_x, local_n, my_rank, p, comm);
-    local_y = (float*)malloc(local_m * sizeof(float));
-    global_x = (float*)malloc(n * sizeof(float));
-
-    Parallel_matrix_vector_prod(local_A, m, n, local_x, global_x,
-        local_y, local_m, local_n, comm);
-    Print_vector((char*)"The product is", local_y, local_m, my_rank, p, comm);
-
-    free(local_A);
-    free(local_x);
-    free(local_y);
-    free(global_x);
-
-    MPI_Finalize();
-
-    return 0;
-}  /* main */
-
-
-void main(int args, char* argv[]) {
-    std::cout << "Matrix multiplication ..." << std::endl;
-    matrix_multiplication();
-}
