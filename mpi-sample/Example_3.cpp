@@ -57,8 +57,8 @@ int Example_3(int argc, char* argv[]) {
     int global_result = 0;
     MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
         MPI_COMM_WORLD);
-    MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
-        MPI_COMM_WORLD);
+    //MPI_Reduce(&local_result, &global_result, 1, MPI_INT, MPI_SUM, 0,
+    //    MPI_COMM_WORLD);
 
     // Print the result from rank 0
     if (task_id == 0) {

@@ -36,16 +36,10 @@
     <ClCompile Include="Example_5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sieve_of_eratosthenes_.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="floyds_algorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyMPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="reading_an_adjacency_matrix_from_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QMPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,10 +47,10 @@
     <ClInclude Include="Examples.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MyMPI.h">
+    <ClInclude Include="mpi_helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mpi_helper.h">
+    <ClInclude Include="QMPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

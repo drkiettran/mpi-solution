@@ -392,6 +392,19 @@ void read_col_striped_matrix(
     if (id == (p - 1)) free(buffer);
 }
 
+/*
+* process 0 opens a file and inputs a two-dimensional matrix,
+* reading and distributing blocks of rows to the other processes.
+* 
+* if root, then
+*   1. read in m and n values
+*   2. broadcast m, n to all processes (including root).
+*   3. determine the number of rows per process
+*   4. allocate storage for the blocks
+*/
+void read_row_striped_matrix_2() {
+    std::string filename;
+}
 
 /*
  *   Process p-1 opens a file and inputs a two-dimensional
@@ -422,19 +435,28 @@ void read_row_striped_matrix(
     MPI_Comm_size(comm, &p);
     MPI_Comm_rank(comm, &id);
     datum_size = get_size(dtype);
-    std::ifstream infile(s);
 
-    if (!infile.is_open()) {
-        std::cerr << "Error opening file " << s << std::endl;
-        return; // Return an empty matrix on error
-    }
+    //std::ifstream infile(s);
+
+    //if (!infile.is_open()) {
+    //    std::cerr << "Error opening file " << s << std::endl;
+    //    return; // Return an empty matrix on error
+    //}
 
     /* Process p-1 opens file, reads size of matrix,
        and broadcasts matrix dimensions to other procs */
 
     if (id == (p - 1)) {
-        infile >> *m;
-        infile >> *n;
+        infileptr = fopen(s, "r");
+        if (infileptr == NULL) {
+            *m = 0;
+        }
+        else {
+            fread(m, sizeof(int), 1, infileptr);
+            fread(n, sizeof(int), 1, infileptr);
+        }
+        //infile >> *m;
+        //infile >> *n;
         std::cout << "m: " << *m << std::endl;
         std::cout << "n: " << *n << std::endl;
     }

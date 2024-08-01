@@ -137,16 +137,14 @@
     <ClCompile Include="Example_3.cpp" />
     <ClCompile Include="Example_4.cpp" />
     <ClCompile Include="Example_5.cpp" />
-    <ClCompile Include="floyds_algorithm.cpp" />
     <ClCompile Include="mpi-sample.cpp" />
-    <ClCompile Include="MyMPI.cpp" />
+    <ClCompile Include="QMPI.cpp" />
     <ClCompile Include="reading_an_adjacency_matrix_from_file.cpp" />
-    <ClCompile Include="sieve_of_eratosthenes_.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Examples.h" />
     <ClInclude Include="mpi_helper.h" />
-    <ClInclude Include="MyMPI.h" />
+    <ClInclude Include="QMPI.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="sample_adjacency_matrix.txt" />

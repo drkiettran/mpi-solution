@@ -1,14 +1,5 @@
-// the_sieve_of_eratosthenes.cpp : This file contains the 'main' function. Program execution begins and ends there.
-/*
-    Create a list of natural numbers 2, 3, 4, ..., n, none of which is marked.
-    2. Set k to 2, the first unmarked number on the list.
-    3. Repeat
-        (a) Mark all multiples of k between k2 and n
-        (b) Find the smallest number greater thank that is unmarked.Set k to this new value.
-    Until k2 > 11
-    4. The unmarked numbers are primes.
-    
-*/
+// ActiveMQ_example.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 
 #include <iostream>
 

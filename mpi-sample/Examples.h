@@ -14,8 +14,7 @@ int Example_2(int argc, char* argv[]);
 int Example_3(int argc, char* argv[]);
 int Example_4();
 int Example_5(int argc, char* argv[]);
-int The_Sieve_of_Eratosthenes(int argc, char* argv[]);
-int floyds_algorithm(std::string& fileName);
-int example_reading_adjacency_matrix_from_a_file(std::string& fileName);
+std::vector<std::vector<int>> readAdjacencyMatrixFromFile(const std::string filename);
+
 
 void print_matrix(const float* matrix, int dim);

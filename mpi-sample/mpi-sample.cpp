@@ -29,6 +29,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Running example ... ";
     get_example_parameters(argc, argv);
     std::cout << example_no << std::endl;
+    std::vector<std::vector<int>> m;
 
     switch (example_no)
     {
@@ -44,12 +45,13 @@ int main(int argc, char* argv[]) {
         return Example_4(); 
     case 5:
         return Example_5(argc, argv);
-    case 6:
-        return The_Sieve_of_Eratosthenes(argc, argv);
-    case 7:
-        return floyds_algorithm(argc, argv);
-    case 8: 
-        return example_reading_adjacency_matrix_from_a_file(fileName);
+    //case 6:
+        //return The_Sieve_of_Eratosthenes(argc, argv);
+    //case 7:
+        //return floyds_algorithm(argc, argv);
+    case 6: 
+        m = readAdjacencyMatrixFromFile(fileName);
+        return 0;
 
     default:
         printf("Invalid example number %d\n", example_no);

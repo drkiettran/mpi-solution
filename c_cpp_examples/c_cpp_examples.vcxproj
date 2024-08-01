@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b094593e-4405-484f-961c-c26c4074122b}</ProjectGuid>
-    <RootNamespace>matrixvectormulplication</RootNamespace>
+    <ProjectGuid>{bce3c3ac-125d-4c51-8ddc-d61b15ba0ce0}</ProjectGuid>
+    <RootNamespace>ccppexamples</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>matrix_vector_multiplication</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,9 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);./;../../Common;./</IncludePath>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -108,14 +104,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./;../../Common;C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;C:\Program Files (x86)\Microsoft SDKs\MPI\Include\</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>msmpi.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,18 +128,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\mpi-sample\quinn_mpi.cpp" />
-    <ClCompile Include="matrix_multiplication_from_chatgpt.cpp" />
-    <ClCompile Include="matrix_vector_multiplication_simon.cpp" />
-    <ClCompile Include="quinn_mv.cpp" />
-    <ClCompile Include="read_matrix_from_file.cpp" />
-    <ClCompile Include="write_matrix_to_file.cpp" />
+    <ClCompile Include="c_cpp_examples.cpp" />
+    <ClCompile Include="DistanceMatrixReader.cpp" />
+    <ClCompile Include="DistanceMatrixWriter.cpp" />
+    <ClCompile Include="MatrixReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="quinn_test_case_A.txt" />
+    <ClInclude Include="DistanceMatrixReader.h" />
+    <ClInclude Include="DistanceMatrixWriter.h" />
+    <ClInclude Include="MemoryExample.h" />
+    <ClInclude Include="VectorReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="quinn_mpi.h" />
+    <Text Include="distance_matrix.txt" />
+    <Text Include="matrix_int.txt" />
+    <Text Include="vector_int.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

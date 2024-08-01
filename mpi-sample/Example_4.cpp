@@ -20,7 +20,7 @@ int Example_4() {
 
     // Create a matrix
     std::vector<float> m;
-    const int dim = 1 << 12;
+    const int dim = 1 << 10;
     std::generate_n(std::back_inserter(m), dim * dim, [&] { return dist(mt); });
 
     // Performance gaussian elimination

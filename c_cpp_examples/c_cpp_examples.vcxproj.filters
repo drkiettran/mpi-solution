@@ -15,33 +15,40 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrix_vector_multiplication_simon.cpp">
+    <ClCompile Include="c_cpp_examples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="read_matrix_from_file.cpp">
+    <ClCompile Include="DistanceMatrixReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="write_matrix_to_file.cpp">
+    <ClCompile Include="DistanceMatrixWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="matrix_multiplication_from_chatgpt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="quinn_mv.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\mpi-sample\quinn_mpi.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MatrixReader.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="quinn_test_case_A.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="quinn_mpi.h">
+    <ClInclude Include="MemoryExample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DistanceMatrixReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceMatrixWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="distance_matrix.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="matrix_int.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="vector_int.txt" />
   </ItemGroup>
 </Project>
