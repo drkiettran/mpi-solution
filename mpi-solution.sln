@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "three-sum", "three-sum\thre
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c_cpp_examples", "c_cpp_examples\c_cpp_examples.vcxproj", "{BCE3C3AC-125D-4C51-8DDC-D61B15BA0CE0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pthreads", "pthreads\pthreads.vcxproj", "{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +153,14 @@ Global
 		{BCE3C3AC-125D-4C51-8DDC-D61B15BA0CE0}.Release|x64.Build.0 = Release|x64
 		{BCE3C3AC-125D-4C51-8DDC-D61B15BA0CE0}.Release|x86.ActiveCfg = Release|Win32
 		{BCE3C3AC-125D-4C51-8DDC-D61B15BA0CE0}.Release|x86.Build.0 = Release|Win32
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Debug|x64.ActiveCfg = Debug|x64
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Debug|x64.Build.0 = Debug|x64
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Debug|x86.Build.0 = Debug|Win32
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Release|x64.ActiveCfg = Release|x64
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Release|x64.Build.0 = Release|x64
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Release|x86.ActiveCfg = Release|Win32
+		{F17ADAF2-394E-4F7F-BB93-7D42EEF136EA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

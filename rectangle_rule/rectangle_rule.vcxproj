@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files (x86)\Microsoft SDKs\MPI\Include\;C:\dev\cisc701\new-pro-cuda-c\tclap-1.4.0-rc1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files (x86)\Microsoft SDKs\MPI\Include\;C:\dev\tclap-1.4.0-rc1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
