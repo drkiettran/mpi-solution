@@ -12,10 +12,12 @@ public:
 						cnt++;
 		return cnt;
 	}
-	static void main(int argc, char* argv[])
-	{
-		ThreeSum ts = ThreeSum();
-		int a[5] = { 1,2,3,4,5 };
-		std::cout << ts.count(a, 5);
-	}
+	
 };
+
+void main(int argc, char* argv[])
+{
+	ThreeSum ts = ThreeSum();
+	int a[5] = { 1,2,3,4,5 };
+	std::cout << ts.count(a, 5);
+}
