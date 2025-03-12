@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 	MPI_Reduce(&solutions, &global_solutions, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 	elapsed_time += MPI_Wtime();
 
-	printf("Process %d is done\n", id);
+	printf("Process %d is done with %d solutions\n", id, solutions);
 
 	fflush(stdout);
 	MPI_Finalize();
