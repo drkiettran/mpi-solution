@@ -89,6 +89,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quinn-Chapter-5", "Quinn-Ch
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sieve_of_Eratosthenes_v1", "Quinn-Chapter-5\Sieve_of_Eratosthenes_v1\Sieve_of_Eratosthenes_v1.vcxproj", "{E986ED50-7464-436D-81DB-36562E947804}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cuda_matrix_multiplication", "Quinn-Chapter-11\cuda_matrix_multiplication\cuda_matrix_multiplication.vcxproj", "{5625E3BE-2AAB-4510-876E-B5B291A95BBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -417,6 +419,14 @@ Global
 		{E986ED50-7464-436D-81DB-36562E947804}.Release|x64.Build.0 = Release|x64
 		{E986ED50-7464-436D-81DB-36562E947804}.Release|x86.ActiveCfg = Release|Win32
 		{E986ED50-7464-436D-81DB-36562E947804}.Release|x86.Build.0 = Release|Win32
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Debug|x64.ActiveCfg = Debug|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Debug|x64.Build.0 = Debug|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Debug|x86.ActiveCfg = Debug|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Debug|x86.Build.0 = Debug|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Release|x64.ActiveCfg = Release|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Release|x64.Build.0 = Release|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Release|x86.ActiveCfg = Release|x64
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF}.Release|x86.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -427,6 +437,7 @@ Global
 		{F0C779C2-7ED4-4691-A7D6-02755A7DC325} = {74DACBE2-9568-454D-A5D1-D8D5E989605B}
 		{9D94F6A0-04F0-444B-82F4-09CBE0304A28} = {74DACBE2-9568-454D-A5D1-D8D5E989605B}
 		{E986ED50-7464-436D-81DB-36562E947804} = {C300FA38-5010-4083-9FD9-D7B43BEEC13E}
+		{5625E3BE-2AAB-4510-876E-B5B291A95BBF} = {74DACBE2-9568-454D-A5D1-D8D5E989605B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FB926B8-02D3-419B-A7D5-1CFA4CB33A12}

@@ -4,6 +4,7 @@
 #include <thread>
 #include <mutex>
 
+
 using namespace std;
 
 mutex mtx; // Mutex to synchronize access to the prime array

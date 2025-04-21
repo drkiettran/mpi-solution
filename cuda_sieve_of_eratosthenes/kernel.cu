@@ -3,6 +3,34 @@
 
 using namespace std;
 
+/*
+* Algorithm: Search for all prime numbers within a range of integer values (i.e., 1-100)
+* A prime number is a number that can be divided by 1 and by itself only. Prime number can only
+* be an `odd` number.
+*
+* 1. Create a list of natural number 2,3,4, ... (i.e., 100). None of which is marked.
+* 2. Set k=2 the first unmarked number on the list.
+* 3. Repeat
+*    - Mark all multiples of k between k^2 and n.
+*    - Find the smallest number greater than k that is unmarked. Set to this new value.
+*    - Until k^2 > n .
+*
+* The unmarked numbers are primes.
+*
+* example: prime numbers between 0 and 10.
+* 1. [F, F, F, F, F, F, F, F, F]
+* 2. k = 2
+* 3. Repeat:
+*    - k^2 = 4. Multiple of 2 is 4, 6, 8, 10 --> [F, F, T, F, T, F, T, F, T];
+*    - Smallest greater than k=2 that is unmarked --> k=3
+*    - k^2=3^2=9 > 10? NO
+*    - k^2 = 9. Multiple of 3 is 6, 9 --> [F, F, T, F, T, F, T, T, T];
+*    - Smallest greater than k=3 that is unmarked --> k=5
+*    - k^2=5^2=25 > 10? YES.
+* 4. WE ARE DONE. [T, T, T, F, T, F, T, T, T] --> 2, 3, 5, 7
+*
+*/
+
 __global__ void sieveKernel(bool* d_prime, int n, int sqrt_n) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x + 2;
 
