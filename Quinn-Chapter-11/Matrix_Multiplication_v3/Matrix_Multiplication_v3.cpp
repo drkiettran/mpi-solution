@@ -75,12 +75,12 @@ void writeMatrix(const string& filename, const vector<vector<int>>& matrix) {
 string printMatrix(int rank, string text, const vector<vector<int>>& matrix) {
     char buf[100];
     string sbuf;
-    sprintf_s(buf, "printMatrix, rank: %d, text = %s\n", rank, text.c_str());
+    snprintf(buf, sizeof(buf), "printMatrix, rank: %d, text = %s\n", rank, text.c_str());
     sbuf += buf;
     if (matrix.size() != 0) {
         for (size_t i = 0; i < matrix.size(); i++) {
             for (size_t j = 0; j < matrix[i].size(); j++) {
-                sprintf_s(buf, "%d, ", matrix[i][j]);
+                snprintf(buf, sizeof(buf), "%d, ", matrix[i][j]);
                 sbuf += buf;
             }
             sbuf += "\n";
@@ -100,11 +100,11 @@ string printMatrix(int rank, string text, const vector<vector<int>>& matrix) {
 string printFlatMatrix(int rank, string text, const vector<int> flatMatrix) {
     string sbuf;
     char buf[1024];
-    sprintf_s(buf, "printFlatMatrix, rank: %d, text: %s\n", rank, text.c_str());
+    snprintf(buf, sizeof(buf), "printFlatMatrix, rank: %d, text: %s\n", rank, text.c_str());
     sbuf += buf;
     if (flatMatrix.size() != 0) {
         for (size_t i = 0; i < flatMatrix.size(); i++) {
-            sprintf_s(buf, "%d, ", flatMatrix[i]);
+            snprintf(buf, sizeof(buf), "%d, ", flatMatrix[i]);
             sbuf += buf;
         }
     }
@@ -133,7 +133,7 @@ void flattenMatrix(vector<int>& flatMatrix, const vector<vector<int>> matrix) {
 */
 void unflattenMatrix(vector <vector<int>>& matrix, vector<int> flatMatrix, const int rows, const int cols) {
     char cbuf[1024];
-    sprintf_s(cbuf, "unflatten, rows: %d, cols: %d\n", rows, cols);
+    snprintf(cbuf, sizeof(cbuf), "unflatten, rows: %d, cols: %d\n", rows, cols);
     cout << cbuf;
 
     for (size_t i = 0; i < rows; i++) {
@@ -152,12 +152,12 @@ void unflattenMatrix(vector <vector<int>>& matrix, vector<int> flatMatrix, const
 void printState(string text, State state) {
     char cbuf[1024];
     string sbuf;
-    sprintf_s(cbuf, "\n==> rank: %d, text: %s size: %d\n", state.rank, text.c_str(), state.size);
+    snprintf(cbuf, sizeof(cbuf), "\n==> rank: %d, text: %s size: %d\n", state.rank, text.c_str(), state.size);
     sbuf.append(cbuf);
-    sprintf_s(cbuf, "aRows: %d, aCols: %d, bRows: %d, bCols: %d\n", state.aRows, state.aCols, state.bRows,
+    snprintf(cbuf, sizeof(cbuf), "aRows: %d, aCols: %d, bRows: %d, bCols: %d\n", state.aRows, state.aCols, state.bRows,
         state.bCols);
     sbuf.append(cbuf);
-    sprintf_s(cbuf, "rowsPerProc: %d, extra: %d, offset: %d\n", state.rowsPerProc, state.extra, state.offset);
+    snprintf(cbuf, sizeof(cbuf), "rowsPerProc: %d, extra: %d, offset: %d\n", state.rowsPerProc, state.extra, state.offset);
     sbuf.append(cbuf);
     sbuf.append(printMatrix(state.rank, "printState matrixA", state.matrixA));
     sbuf.append(printMatrix(state.rank, "printState matrixB", state.matrixB));
