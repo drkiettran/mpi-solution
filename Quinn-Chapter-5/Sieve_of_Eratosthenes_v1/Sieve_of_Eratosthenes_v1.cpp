@@ -1,17 +1,19 @@
-#include <mpi.h>
+
 #include <iostream>
+#include <string>
 #include <vector>
 #include <cmath>
+#include <mpi.h>
 
 #define N 10
 using namespace std;
 
-void print(string text, int rank, int size, int ss, int start, int end, vector<bool> lp) {
+void print(std::string text, int rank, int size, int ss, int start, int end, vector<bool> lp) {
     char cbuf[1024];
     string sbuf;
-    sprintf_s(cbuf, "\n==> rank: %d, text: %s size: %d\n", rank, text.c_str(), size);
+    snprintf(cbuf, sizeof(cbuf), "\n==> rank: %d, text: %s size: %d\n", rank, text.c_str(), size);
     sbuf.append(cbuf);
-    sprintf_s(cbuf, "ss: %d, start: %d, end: %d\n", ss, start, end);
+    snprintf(cbuf, sizeof(cbuf), "ss: %d, start: %d, end: %d\n", ss, start, end);
     sbuf.append(cbuf);
 
     cout << sbuf << end;

@@ -75,12 +75,12 @@ void writeMatrix(const string& filename, const vector<vector<int>>& matrix) {
 string printMatrix(int rank, string text, const vector<vector<int>>& matrix) {
     char buf[100];
     string sbuf;
-    snprintf(buf, sizeof(buf), "printMatrix, rank: %d, text = %s\n", rank, text.c_str());
+    snprintf(buf, sizeof(buf), "\n\x1b[1;33mprintMatrix, rank: %d, text = %s\x1b[0m\n", rank, text.c_str());
     sbuf += buf;
     if (matrix.size() != 0) {
         for (size_t i = 0; i < matrix.size(); i++) {
             for (size_t j = 0; j < matrix[i].size(); j++) {
-                snprintf(buf, sizeof(buf), "%d, ", matrix[i][j]);
+                snprintf(buf, sizeof(buf), "\x1b[1;31m%d\x1b[0m, ", matrix[i][j]);
                 sbuf += buf;
             }
             sbuf += "\n";
